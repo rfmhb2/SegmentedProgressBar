@@ -5,6 +5,7 @@ import android.content.Context
 import android.graphics.Canvas
 import android.graphics.Color
 import android.os.Handler
+import android.os.Looper
 import android.util.AttributeSet
 import android.view.MotionEvent
 import android.view.View
@@ -55,7 +56,7 @@ class SegmentedProgressBar : View, Runnable, ViewPager.OnPageChangeListener, Vie
     private val selectedSegmentIndex: Int
         get() = segments.indexOf(this.selectedSegment)
 
-    private val animationHandler = Handler()
+    private val animationHandler = Handler(Looper.getMainLooper())
     private val animationUpdateTime: Long
         get() = timePerSegmentMs / 100
 
